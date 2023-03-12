@@ -1,7 +1,7 @@
 /* import statements*/
 import React from 'react';
 import {Link} from 'react-router-dom'; // DO A 'npm install react-router-dom'
-import {AppBar, Typography, Toolbar, Button} from '@material-ui/core';
+import {AppBar, Avatar, Typography, Toolbar, Button} from '@material-ui/core';
 import memories from '../../images/memories.png';
 //may or may not be needed
 import useStyles from './styles';
@@ -12,21 +12,24 @@ import useStyles from './styles';
 const Navbar = () => {
     const classes = useStyles(); //-- line not needed
     const user = null;
-    return(
-         <AppBar position="static" color="inherit">
-            <Typography variant="h2" align="center">Memories</Typography>
-            <img src={memories} alt="dreamio" height= "60" />
-            
-         </AppBar>
-    );
     /*
     return(
-        <AppBar position="static" color="inherit">
-            <div className={classes.brandContainer}>
-                <Typography component={Link} to="/" variant="h2" align="center">Memories</Typography>
-                <img src={memories} alt="dreamio" height= "60" />
-            </div>
+        <AppBar className={classes.appBar} position="static" color="inherit">
+                <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
+                <img className={classes.image} src={memories} alt="dreamio" height= "60" />
 
+        </AppBar>
+    */
+    
+    
+    return(
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <div className={classes.brandContainer}>
+                <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Memories</Typography>
+                <img className={classes.image} src={memories} alt="dreamio" height= "60" />
+            </div>
+        
+        
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile}>
@@ -40,8 +43,11 @@ const Navbar = () => {
                 )}
             </Toolbar>
         </AppBar>
+       
     );
-    */
+    
+
 };
+
 
 export default Navbar;
