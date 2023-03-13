@@ -15,7 +15,7 @@ const App = ()=>{
         dispatch(getPosts());
     }, [dispatch]);
     return(
-        <Container maxWidth='lg'>
+        <Container maxWidth='lg' className={classes.app}>
             <AppBar className={classes.appBar} position="static" color="inherit">
                 <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
                 <img className={classes.image} src={memories} alt="dreamio" height= "60" />

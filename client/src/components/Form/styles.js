@@ -8,6 +8,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    //Maybe add something like backgroundColor: "red", instead of red try to find a better looking color
   },
   form: {
     display: 'flex',

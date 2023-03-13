@@ -15,4 +15,11 @@ export default makeStyles(() => ({
   image: {
     marginLeft: '15px',
   },
+
+  //Maybe choose a better looking color for the background over here for the app.
+  // app:{
+  //   backgroundColor: "blue"
+  // }
+  
+  
 }));
