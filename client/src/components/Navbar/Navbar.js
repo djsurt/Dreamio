@@ -1,17 +1,49 @@
 /* import statements*/
-import React from 'react';
-import {Link} from 'react-router-dom'; // DO A 'npm install react-router-dom'
+import React, {useState, useEffect} from 'react';
+import {Link, useHistory, useLocation} from 'react-router-dom'; // DO A 'npm install react-router-dom'
 import {AppBar, Avatar, Typography, Toolbar, Button} from '@material-ui/core';
 import memories from '../../images/memories.png';
-//may or may not be needed
+import {Provider, useDispatch} from 'react-redux';
+import { configureStore } from "@reduxjs/toolkit"; //  IMPORTANT!!!! DO AN npm install '@reduxjs/toolkit' --legacy-peer-deps
+import authReducer from '../../reducers/auth';
+//for front end styles
 import useStyles from './styles';
+
+
+const NavWrapper = () => {
+  const store = configureStore({reducer: authReducer});
+
+  return (
+    <Provider store={store}> 
+      <Navbar /> 
+    </Provider>
+  );
+};
 
 /*
 * navbar from App.js
 */
 const Navbar = () => {
-    const classes = useStyles(); //-- line not needed
-    const user = null;
+    const classes = useStyles(); //-- line for CSS styles frontend design
+    const history = useHistory();
+    const location = useLocation();
+    //used for login and logout. used to get user
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    //console.log(user);
+    const dispatch = useDispatch();
+    //logout functionality for the logout button defined later below
+    const logout = () =>{
+        dispatch({type: 'LOGOUT'});
+        history.push('/'); // go to home page
+        setUser(null); //no more user bc logged out
+    };
+
+    useEffect(()=>{
+        ///JWT manual sign up
+
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]);
+    //const user = null;
     /*
     return(
         <AppBar className={classes.appBar} position="static" color="inherit">
@@ -35,7 +67,7 @@ const Navbar = () => {
                     <div className={classes.profile}>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
                         <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                        <Button variant="contained" className={classes.logout} color="secondary">Logout</Button>                    
+                        <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>                    
                     </div>
                 ) : (
                     <Button component={Link} to="/auth" variant="contained" color="primary">Login</Button>
@@ -50,4 +82,4 @@ const Navbar = () => {
 };
 
 
-export default Navbar;
+export default NavWrapper;
