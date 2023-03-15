@@ -4,6 +4,9 @@ import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createPost } from "../../actions/posts";
+
+//Get the ID of the current post we're on
+
 const Form = () => {
     const classes = useStyles();
 
