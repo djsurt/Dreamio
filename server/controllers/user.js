@@ -24,8 +24,6 @@ export const signin = async(req, res) => {
 };
 
 export const signup = async(req, res) => {
-	//DELETE LINE BELOW
-	console.log("controller user definitions");
 	//get data from frontend from sign up page
 	const {email, password, confirmPassword, firstName, lastName} = req.body;
 	
