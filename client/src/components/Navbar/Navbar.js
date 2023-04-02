@@ -6,7 +6,7 @@ import memories from '../../images/memories.png';
 import {Provider, useDispatch} from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit"; //  IMPORTANT!!!! DO AN npm install '@reduxjs/toolkit' --legacy-peer-deps
 import authReducer from '../../reducers/auth';
-import decode from 'jwt-decode';
+//import decode from 'jwt-decode';
 
 //for front end styles
 import useStyles from './styles';
@@ -43,13 +43,13 @@ const Navbar = () => {
     useEffect(()=>{
         ///JWT manual sign up
 
-        const token = user?.token;
+        //const token = user?.token;
 
-        if(token) {
-            const decodedToken = decode(token);
+        //if(token) {
+          //  const decodedToken = decode(token);
 
-            if(decodedToken.exp * 1000 < new Date().getTime()) logout();
-        }
+            //if(decodedToken.exp * 1000 < new Date().getTime()) logout();
+        //}
 
         setUser(JSON.parse(localStorage.getItem('profile')));
     }, [location]);

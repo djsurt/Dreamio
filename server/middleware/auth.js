@@ -11,10 +11,10 @@ const auth = async(req, res, next) =>{
 
 		}
 		//don't need because this part is google
-		//else{
-			//decodedData = jwt.decode(token);
-			//req.userId = decodedData?.sub;
-		//}
+		else{
+			decodedData = jwt.decode(token);
+			req.userId = decodedData?.sub;
+		}
 		next();
 		
 
