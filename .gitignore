@@ -6,6 +6,9 @@ server/node_modules
 /.pnp
 .pnp.js
 
+#no virtual env
+/*venv
+
 # testing
 /coverage
 

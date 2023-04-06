@@ -1,0 +1,23 @@
+I had a dream that I was flying over a beautiful landscape.
+Sentiment: Positive
+
+Last night, I had a nightmare about being chased by a monster.
+Sentiment: Negative
+
+My dream was so strange - I was at a party with all my exes!
+Sentiment: Neutral
+
+I had a dream that I was reunited with my childhood pet.
+Sentiment: Positive
+
+In my dream, I won the lottery and was able to buy my dream house.
+Sentiment: Positive
+
+I had a dream about my late grandmother, and it felt so real.
+Sentiment: Positive
+
+I dreamt that I was lost in a dark forest and couldn't find my way out.
+Sentiment: Negative
+
+My dream was about being on a beach, watching the sunset with my partner.
+Sentiment: Positive
