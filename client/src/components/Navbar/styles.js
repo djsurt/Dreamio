@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '8px 20px',
+    background: 'linear-gradient(45deg, #0000FF 30%, #ADD8E6 60%)'
   },
   heading: {
     color: 'rgba(0,183,255, 1)',

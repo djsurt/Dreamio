@@ -8,18 +8,30 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    background: 'rgb(255,253,208)',
     //Maybe add something like backgroundColor: "red", instead of red try to find a better looking color
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    
   },
   fileInput: {
-    width: '97%',
-    margin: '10px 0',
+      margin: '10px 10px 10px 10px',
   },
   buttonSubmit: {
-    marginBottom: 10,
+    margin: '15px',
+    color: 'white',
+    background: 'linear-gradient(45deg, #808080 30%, #FF0000 90%)',
   },
+  buttonClear: {
+      color: 'white',
+      background: 'linear-gradient(45deg, #808080 30%, #0000FF 90%)',
+  },
+  textareaMessage: {
+      width: '94.5%',
+      background: 'rgb(255,253,208)',
+  },
+
 }));
