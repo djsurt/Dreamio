@@ -69,7 +69,7 @@ const Navbar = () => {
             <div className={classes.brandContainer}>
                 <Link to="/" ><img className={classes.image}  src={memories} alt="dreamio" height= "150" width="150" /></Link>
             </div>
-        
+            <Button component={Link} to="/friendRequest" variant="contained" color="primary">Friend Request</Button>
         
             <Toolbar className={classes.toolbar}>
                 {user ? (
