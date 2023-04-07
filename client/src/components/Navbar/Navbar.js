@@ -70,8 +70,9 @@ const Navbar = () => {
                 <Link to="/" ><img className={classes.image}  src={memories} alt="dreamio" height= "150" width="150" /></Link>
             </div>
         
-        
             <Toolbar className={classes.toolbar}>
+                
+                <Button component={Link} to="/community" variant="contained" color="primary">Community Feels</Button>
                 {user ? (
                     <div className={classes.profile}>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
