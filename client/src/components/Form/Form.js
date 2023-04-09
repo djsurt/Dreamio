@@ -30,7 +30,6 @@ const Form = ({currentId, setCurrentId}) => {
         e.preventDefault();
 
         if(currentId){
-            console.log("Hi");
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             
         } else{
