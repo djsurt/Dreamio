@@ -7,6 +7,7 @@ import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import moment from 'moment';
 import useStyles from './styles'
 import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 import {deletePost, likePost} from '../../../actions/posts';
 
@@ -14,6 +15,7 @@ import {deletePost, likePost} from '../../../actions/posts';
 const Post = ({post, setCurrentId}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = JSON.parse(localStorage.getItem('profile'));
 
      var firstPart = `You and ${post.likes.length - 1} other`
@@ -30,8 +32,9 @@ const Post = ({post, setCurrentId}) => {
     return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
   };
 
+  const openPost = () => history.push(`/posts/${post._id}`)
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} onClick={openPost}> 
         <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
         <div className={classes.overlay}>
           <Typography variant="h6">{post.name}</Typography>
