@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/RocketSysRepo/static/css/main.a812c9a1.chunk.css",
+    "main.js": "/RocketSysRepo/static/js/main.6f880d14.chunk.js",
+    "main.js.map": "/RocketSysRepo/static/js/main.6f880d14.chunk.js.map",
+    "runtime-main.js": "/RocketSysRepo/static/js/runtime-main.ac985243.js",
+    "runtime-main.js.map": "/RocketSysRepo/static/js/runtime-main.ac985243.js.map",
+    "static/js/2.95d681db.chunk.js": "/RocketSysRepo/static/js/2.95d681db.chunk.js",
+    "static/js/2.95d681db.chunk.js.map": "/RocketSysRepo/static/js/2.95d681db.chunk.js.map",
+    "index.html": "/RocketSysRepo/index.html",
+    "precache-manifest.3d70a6ede4802bf75dfe78150471d8ec.js": "/RocketSysRepo/precache-manifest.3d70a6ede4802bf75dfe78150471d8ec.js",
+    "service-worker.js": "/RocketSysRepo/service-worker.js",
+    "static/css/main.a812c9a1.chunk.css.map": "/RocketSysRepo/static/css/main.a812c9a1.chunk.css.map",
+    "static/js/2.95d681db.chunk.js.LICENSE.txt": "/RocketSysRepo/static/js/2.95d681db.chunk.js.LICENSE.txt",
+    "static/js/main.6f880d14.chunk.js.LICENSE.txt": "/RocketSysRepo/static/js/main.6f880d14.chunk.js.LICENSE.txt",
+    "static/media/bed-solid.svg": "/RocketSysRepo/static/media/bed-solid.b6745255.svg",
+    "static/media/memories.png": "/RocketSysRepo/static/media/memories.0a0ad2eb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ac985243.js",
+    "static/js/2.95d681db.chunk.js",
+    "static/css/main.a812c9a1.chunk.css",
+    "static/js/main.6f880d14.chunk.js"
+  ]
+}
