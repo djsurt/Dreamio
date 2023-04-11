@@ -110,6 +110,7 @@ export const likePost = async (req, res) => {
 }
 
 export const commentPost = async (req, res) => {
+    console.log("Got to commentPost")
     const { id } = req.params;
     const { value } = req.body;
 
@@ -119,7 +120,7 @@ export const commentPost = async (req, res) => {
 
     post.comments.push(value);
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new : true});
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true});
 
     res.json(updatedPost);
 }
