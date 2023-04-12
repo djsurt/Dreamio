@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Sentiment from 'sentiment';
 import http from 'http';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
+import Avatar from '@mui/material/Avatar';
 
 const options = {
   hostname: 'localhost',
@@ -8,6 +14,10 @@ const options = {
   path: '/posts',
   method: 'GET'
 };
+
+const happyImage = 'https://p1.hiclipart.com/preview/841/78/529/emoji-sticker-smiling-emoji-png-clipart.jpg';
+const neutralImage = 'https://www.vhv.rs/dpng/d/533-5334374_slightly-smiling-face-icon-emoji-hd-png.png';
+const sadImage = 'https://www.pngfind.com/pngs/m/47-476199_free-png-download-sad-emoji-png-images-background.png';
 
 const analyzeSentiment = (text) => {
   
@@ -47,7 +57,6 @@ const mongoSentiment = async () => {
       resultingVal = resultingVal + (analyzeSentiment(posts[i]['message']));
     }
     value = resultingVal;
-    console.log(value);
 
     if (value <= -1) {
       return "The community is feeling down at the moment :(";
@@ -63,16 +72,46 @@ const mongoSentiment = async () => {
 
 function Community() {
   const [sentimentStatus, setSentimentStatus] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchSentimentStatus() {
       const status = await mongoSentiment();
       setSentimentStatus(status);
+      if (status === "The community is feeling down at the moment :(") {
+        setImageURL(sadImage);
+      } else if (status === "The community is happy!!") {
+        setImageURL(happyImage);
+      } else {
+        setImageURL(neutralImage);
+      }
+      setLoading(false);
     }
     fetchSentimentStatus();
   }, []);
 
-  return <div>{sentimentStatus}</div>;
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <Card>
+          <CardContent>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <Avatar alt="Sentiment Image" src={imageURL} sx={{ width: 100, height: 100 }} />
+            </Box>
+            <Typography variant="h5" component="div" align="center">
+              Community Sentiment
+            </Typography>
+            <Typography variant="body2" color="text.secondary" align="center">
+              {sentimentStatus}
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
+    </Box>
+  );
 }
 
 export default Community;
