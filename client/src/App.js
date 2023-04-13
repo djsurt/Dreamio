@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
+import Community from "./components/Community/Community";
 import FriendRequest from "./components/FriendRequest/FriendRequest";
 import PostDetails from './components/PostDetails/PostDetails';
 
@@ -22,6 +23,7 @@ const App = ()=>{
                     <Route path = "/posts/:id" component={PostDetails}/>
                     <Route path="/auth" exact component={()=>(!user?<Auth/>: <Redirect to="/posts"/>)} />
                     <Route path="/friendRequest" exact component={FriendRequest} />
+                    <Route path="/community" exact component={Community} />
                 </Switch>
             </Container>
         </BrowserRouter>

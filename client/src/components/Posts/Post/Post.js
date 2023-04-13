@@ -34,8 +34,8 @@ const Post = ({post, setCurrentId}) => {
 
   const openPost = () => history.push(`/posts/${post._id}`)
     return (
-      <Card className={classes.card} onClick={openPost}> 
-        <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+      <Card className={classes.card}> 
+        <CardMedia className={classes.media} image={post.selectedFile} title={post.title} onClick={openPost} />
         <div className={classes.overlay}>
           <Typography variant="h6">{post.name}</Typography>
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>

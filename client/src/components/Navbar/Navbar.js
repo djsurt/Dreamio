@@ -72,6 +72,8 @@ const Navbar = () => {
             <Button component={Link} to="/friendRequest" variant="contained" color="primary">Friend Request</Button>
         
             <Toolbar className={classes.toolbar}>
+                
+                <Button component={Link} to="/community" variant="contained" color="primary">Community Feels</Button>
                 {user ? (
                     <div className={classes.profile}>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
