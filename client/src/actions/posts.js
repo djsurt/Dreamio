@@ -83,9 +83,7 @@ export const likePost = (id) => async (dispatch) =>{
 
 export const commentPost = (value, id) => async (dispatch) => {
     try{
-        console.log("Comment Initialized")
         const { data } = await api.comment(value, id);
-        console.log("Here");
         console.log(data);
 
         dispatch({type: COMMENT, payload: data});
@@ -93,7 +91,6 @@ export const commentPost = (value, id) => async (dispatch) => {
         return data.comments;
 
     } catch(error){
-        console.log("Comment Error Thrown")
         console.log(error);
     }
 }

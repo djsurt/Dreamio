@@ -31,6 +31,7 @@ export default (state = {isLoading:true, posts:[]}, action) =>{
                     if(post._id === action.payload._id){
                         return action.payload;
                     }
+                    // otherwise, return the post as it was
                     return post;
                 })
             }

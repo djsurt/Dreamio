@@ -110,7 +110,6 @@ export const likePost = async (req, res) => {
 }
 
 export const commentPost = async (req, res) => {
-    console.log("Got to commentPost")
     const { id } = req.params;
     const { value } = req.body;
 
