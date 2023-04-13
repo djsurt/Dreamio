@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_POST, START_LOADING, END_LOADING, CREATE, DELETE, UPDATE, FETCH_BY_SEARCH,} from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_POST, START_LOADING, END_LOADING, CREATE, DELETE, UPDATE, FETCH_BY_SEARCH, COMMENT} from '../constants/actionTypes';
 
 export default (state = {isLoading:true, posts:[]}, action) =>{
     switch(action.type){
@@ -23,6 +23,18 @@ export default (state = {isLoading:true, posts:[]}, action) =>{
             return {...state, posts: [...state.posts, action.payload]};
         case UPDATE:
             return {...state, posts: state.posts.map((post) => post._id === action.payload._id ? action.payload : post)};
+        case COMMENT:
+            return {
+                ... state,
+                posts: state.posts.map((post) => {
+                    // only change the post that has the same id as the one that was commented on
+                    if(post._id === action.payload._id){
+                        return action.payload;
+                    }
+                    // otherwise, return the post as it was
+                    return post;
+                })
+            }
         default:
             return state;
     }

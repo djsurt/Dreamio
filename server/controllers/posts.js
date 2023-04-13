@@ -1,5 +1,9 @@
+import express from 'express';
 import mongoose from "mongoose";
+
 import PostMessage from "../models/postMessage.js";
+
+const router = express.Router();
 
 export const getPosts = async (req, res)=>{
     const { page} = req.query;
@@ -104,3 +108,20 @@ export const likePost = async (req, res) => {
 
     res.json(updatedPost);
 }
+
+export const commentPost = async (req, res) => {
+    const { id } = req.params;
+    const { value } = req.body;
+
+    const post = await PostMessage.findById(id);
+
+    console.log(post);
+
+    post.comments.push(value);
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true});
+
+    res.json(updatedPost);
+}
+
+export default router;
