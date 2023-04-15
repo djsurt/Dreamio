@@ -8,6 +8,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Community from "./components/Community/Community";
 import FriendRequest from "./components/FriendRequest/FriendRequest";
 import PostDetails from './components/PostDetails/PostDetails';
+import UserProfile from "./components/UserProfile/UserProfile";
 
 const App = ()=>{
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -24,6 +25,7 @@ const App = ()=>{
                     <Route path="/auth" exact component={()=>(!user?<Auth/>: <Redirect to="/posts"/>)} />
                     <Route path="/friendRequest" exact component={FriendRequest} />
                     <Route path="/community" exact component={Community} />
+                    <Route path="/creators/:name" exact component={UserProfile} />
                 </Switch>
             </Container>
         </BrowserRouter>
