@@ -14,8 +14,8 @@ jobs:
      runs-on: ubuntu-latest
      env:
           CI: ""
-          PORT: ${{ secrets.PORT }}
-          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+          PORT: ${{ vars.PORT }}
+          CONNECTION_URL: ${{ vars.CONNECTION_URL }}
      defaults:
        run:
          working-directory: ./server
