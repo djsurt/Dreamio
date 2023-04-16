@@ -1,26 +1,32 @@
 // src/components/UserProfile/UserProfile.js
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Typography } from '@material-ui/core';
 
-import { getUserPosts } from '../../actions/posts';
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+  },
+  title: {
+    marginBottom: theme.spacing(2),
+  },
+}));
 
 const UserProfile = () => {
-  const { posts } = useSelector((state) => state.posts);
-  const dispatch = useDispatch();
-  const { name } = useParams();
+  const classes = useStyles();
+  const { userId } = useParams();
 
-  useEffect(() => {
-    dispatch(getUserPosts(name));
-  }, [name]);
+  // Fetch user data here using the userId and store it in the component state.
 
   return (
     <div>
-      <Paper>
-        <Typography variant="h4" component="h1">
-          {name}'s Posts
+      <Paper className={classes.paper}>
+        <Typography className={classes.title} variant="h4">
+          User Profile
         </Typography>
+        {/* Render user data here */}
       </Paper>
     </div>
   );
