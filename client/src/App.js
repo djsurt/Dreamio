@@ -7,7 +7,7 @@ import Auth from './components/Auth/Auth';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Community from "./components/Community/Community";
 import PostDetails from './components/PostDetails/PostDetails';
-import UserProfile from "./components/UserProfile/UserProfile";
+import UserProfile from './components/UserProfile/UserProfile';
 
 const App = ()=>{
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -22,7 +22,7 @@ const App = ()=>{
                     <Route path = "/posts/search" exact component = {Home}/>
                     <Route path = "/posts/:id" component={PostDetails}/>
                     <Route path="/auth" exact component={()=>(!user?<Auth/>: <Redirect to="/posts"/>)} />
-                    <Route path="/user/:userId" exact component={UserProfile} />
+                    <Route path="/user/:username" exact component={UserProfile} />
                     <Route path="/community" exact component={Community} />
                 </Switch>
             </Container>

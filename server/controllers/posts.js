@@ -123,15 +123,3 @@ export const commentPost = async (req, res) => {
 
     res.json(updatedPost);
 }
-
-export const getPostsByCreator = async (req, res) => {
-    const { name } = req.params;
-    try {
-      const posts = await Post.find({ name: name });
-      res.status(200).json(posts);
-    } catch (error) {
-      res.status(404).json({ message: error.message });
-    }
-};
-
-export default router;

@@ -94,12 +94,3 @@ export const commentPost = (value, id) => async (dispatch) => {
         console.log(error);
     }
 }
-
-export const getUserPosts = (name) => async (dispatch) => {
-    try {
-      const { data } = await api.fetchUserPosts(name);
-      dispatch({ type: 'FETCH_USER_POSTS', payload: data });
-    } catch (error) {
-      console.log(error);
-    }
-  };

@@ -6,6 +6,7 @@ import memories from '../../images/memories.png';
 import {Provider, useDispatch} from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit"; //  IMPORTANT!!!! DO AN npm install '@reduxjs/toolkit' --legacy-peer-deps
 import authReducer from '../../reducers/auth';
+import { fetchUsers } from '../../api';
 //import decode from 'jwt-decode';
 
 //for front end styles
@@ -29,6 +30,7 @@ const Navbar = () => {
     const classes = useStyles(); //-- line for CSS styles frontend design
     const history = useHistory();
     const location = useLocation();
+    const [users, setUsers] = useState([]);
     //used for login and logout. used to get user
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     //console.log(user);
@@ -39,6 +41,13 @@ const Navbar = () => {
         history.push('/'); // go to home page
         setUser(null); //no more user bc logged out
     };
+
+    useEffect(() => {
+        const fetchAPI = async () => {
+            setUsers(await fetchUsers());
+        };
+        fetchAPI();
+    }, []);
 
     useEffect(()=>{
         ///JWT manual sign up
@@ -77,9 +86,9 @@ const Navbar = () => {
                 {user ? (
                     <div className={classes.profile}>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                        <Link to={`/user/${user.result.name}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                            <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                        </Link>
+                            <Link to={`/user/${user.result.name}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+                            </Link>
                         <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>                    
                     </div>
                 ) : (
