@@ -45,44 +45,39 @@ export const sendFriendRequest = async (req, res) => {
 };
 
 export const acceptFriendRequest = async (req, res) => {
-    const { senderId, receiverId } = req.body;
+    const { userId, requesterId } = req.params;
 
-    try {
-        const sender = await User.findById(senderId);
-        const receiver = await User.findById(receiverId);
-
-        if (!receiver.friends.includes(senderId)) {
-            receiver.friends.push(senderId);
-            receiver.friendRequests.pull(senderId);
-            await receiver.save();
-        }
-
-        if (!sender.friends.includes(receiverId)) {
-            sender.friends.push(receiverId);
-            await sender.save();
-        }
-
-        res.status(200).json({ message: 'Friend request accepted.' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(requesterId)) {
+        return res.status(404).send('No user with that id');
     }
+
+    const user = await User.findById(userId);
+    const requester = await User.findById(requesterId);
+
+    user.friendRequests.pull(requesterId);
+    requester.friends.push(userId);
+    user.friends.push(requesterId);
+
+    await user.save();
+    await requester.save();
+
+    res.status(200).json({ message: 'Friend request accepted.' });
 };
 
 export const ignoreFriendRequest = async (req, res) => {
-    const { senderId, receiverId } = req.body;
+    const { userId, requesterId } = req.params;
 
-    try {
-        const receiver = await User.findById(receiverId);
-
-        if (receiver.friendRequests.includes(senderId)) {
-            receiver.friendRequests.pull(senderId);
-            await receiver.save();
-        }
-
-        res.status(200).json({ message: 'Friend request ignored.' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(requesterId)) {
+        return res.status(404).send('No user with that id');
     }
+
+    const user = await User.findById(userId);
+
+    user.friendRequests.pull(requesterId);
+
+    await user.save();
+
+    res.status(200).json({ message: 'Friend request ignored.' });
 };
 
 // ... other imports and functions
@@ -110,6 +105,24 @@ export const getUserFriendRequests = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 };
+
+// userController.js
+export const getUserById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 
 

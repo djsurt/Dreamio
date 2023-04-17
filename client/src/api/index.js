@@ -29,8 +29,10 @@ export const signUp = (formData) => API.post('/user/signup', formData);
 export const fetchUsers = () => API.get('/user');
 export const fetchUserByUsername = (username) => API.get(`/user/${username}`);
 export const sendFriendRequest = (senderId, receiverId) => API.post('/user/sendRequest', { senderId, receiverId });
-export const acceptFriendRequest = (senderId, receiverId) => API.post('/user/acceptRequest', { senderId, receiverId });
-export const ignoreFriendRequest = (senderId, receiverId) => API.post('/user/ignoreRequest', { senderId, receiverId });
+export const acceptFriendRequest = (userId, requesterId) => API.post(`/user/acceptRequest/${userId}/${requesterId}`);
+export const ignoreFriendRequest = (userId, requesterId) => API.post(`/user/ignoreRequest/${userId}/${requesterId}`);
 export const getUserFriends = (userId) => API.get(`/user/${userId}/friends`);
 export const getUserFriendRequests = (userId) => API.get(`/user/${userId}/friendRequests`);
+// api/index.js
+export const fetchUserById = (id) => API.get(`/user/id/${id}`);
 

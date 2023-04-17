@@ -1,7 +1,7 @@
 import express from "express";
 
 import { signin, signup} from "../controllers/user.js";
-import { getUsers, getUserByUsername, getUserFriends, getUserFriendRequests, sendFriendRequest, acceptFriendRequest, ignoreFriendRequest } from '../controllers/userController.js';
+import { getUsers, getUserByUsername, getUserFriends, getUserFriendRequests, sendFriendRequest, acceptFriendRequest, ignoreFriendRequest, getUserById } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -11,8 +11,10 @@ router.post('/signup', signup);
 router.get('/', getUsers);
 router.get('/:username', getUserByUsername);
 router.post('/sendRequest', sendFriendRequest);
-router.post('/acceptRequest', acceptFriendRequest);
-router.post('/ignoreRequest', ignoreFriendRequest);
+router.post('/acceptRequest/:userId/:requesterId', acceptFriendRequest);
+router.post('/ignoreRequest/:userId/:requesterId', ignoreFriendRequest);
 router.get('/:userId/friends', getUserFriends);
 router.get('/:userId/friendRequests', getUserFriendRequests);
+router.get('/id/:id', getUserById);
+
 export default router;

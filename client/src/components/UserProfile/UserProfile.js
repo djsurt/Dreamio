@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchUserByUsername, getUserFriends, getUserFriendRequests, sendFriendRequest, acceptFriendRequest, ignoreFriendRequest } from '../../api';
+import { fetchUserByUsername, getUserFriends, getUserFriendRequests, sendFriendRequest, acceptFriendRequest, ignoreFriendRequest, fetchUserById } from '../../api';
 import useStyles from './styles';//for front end styles
 import {Grid, CircularProgress, Paper, Card, CardHeader, CardContent, Button} from '@material-ui/core';
 //import {CloudIcon, SnoozeIcon, NotificationsIcon, FaceRetouchingOffIcon} from '@mui/icons-material';
@@ -55,16 +55,19 @@ useEffect(() => {
     };
 
     const handleAcceptRequest = async (requesterId) => {
-      await acceptFriendRequest(loggedInUser.result._id, requesterId);
-      setFriendRequests((prevRequests) => prevRequests.filter((request) => request._id !== requesterId));
-      const newFriend = await fetchUserByUsername(requesterId);
-      setFriends((prevFriends) => [...prevFriends, newFriend.data]);
-  };
-
-  const handleIgnoreRequest = async (requesterId) => {
-      await ignoreFriendRequest(loggedInUser.result._id, requesterId);
-      setFriendRequests((prevRequests) => prevRequests.filter((request) => request._id !== requesterId));
-  };
+        await acceptFriendRequest(loggedInUser.result._id, requesterId);
+        setFriendRequests((prevRequests) => prevRequests.filter((request) => request._id !== requesterId));
+        const newFriend = await fetchUserById(requesterId);
+        setFriends((prevFriends) => [...prevFriends, newFriend.data]);
+        console.log(friendRequests);
+    };
+    
+    const handleIgnoreRequest = async (requesterId) => {
+        await ignoreFriendRequest(loggedInUser.result._id, requesterId);
+        setFriendRequests((prevRequests) => prevRequests.filter((request) => request._id !== requesterId));
+        console.log(friendRequests);
+    };
+    
 
     if (!userProfile) {
         return <div>Loading...</div>;
