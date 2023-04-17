@@ -140,8 +140,8 @@ useEffect(() => {
                                         {friendRequests.map((request) => (
                                         <li key={request._id}>
                                             {request.name}
-                                            <Button onClick={() => handleAcceptRequest(request._id)} startIcon={<AddReactionIcon />}>Accept</Button>&nbsp;&nbsp;
-                                            <Button onClick={() => handleIgnoreRequest(request._id)} startIcon={<SnoozeIcon />}>Ignore</Button>
+                                            <Button variant="contained" color="primary" onClick={() => handleAcceptRequest(request._id)} startIcon={<AddReactionIcon />}>Accept</Button>&nbsp;&nbsp;
+                                            <Button variant="contained" color="secondary" onClick={() => handleIgnoreRequest(request._id)} startIcon={<SnoozeIcon />}>Ignore</Button>
                                         </li>
                                         ))}
                                         </ul>
