@@ -16,8 +16,7 @@ jobs:
           CI: ""
           PORT: '${{ secrets.PORT }}'
           CONNECTION_URL: '${{ secrets.CONNECTION_URL }}'
-          port: ${{ vars.PORT }}
-          url: ${{ vars.CONNECTION_URL }}
+  
      defaults:
        run:
          working-directory: ./server
@@ -40,8 +39,8 @@ jobs:
       - run: npm run build --if-present
       - run: echo 'The PORT is:${{ secrets.PORT }}'
       - run: echo 'The CONNECTION_URL is:${{ secrets.CONNECTION_URL }}'
-      - run: echo 'The PORT is:$port'
-      - run: echo 'The CONNECTION_URL is:$url'
+      - run: echo 'The actor is:$GITHUB_ACTOR'
+      - run: echo 'The action is:$GITHUB_REF'
         
   build:
   
