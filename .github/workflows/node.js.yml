@@ -70,7 +70,5 @@ jobs:
       env:
         PORT: ${{ secrets.PORT }}
         CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
-      environment:
-        name: github-pages
 
 
