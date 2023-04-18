@@ -39,8 +39,7 @@ jobs:
       - run: npm run build --if-present
       - run: echo 'The PORT is:${{ secrets.PORT }}'
       - run: echo 'The CONNECTION_URL is:${{ secrets.CONNECTION_URL }}'
-      - run: echo 'The actor is:$GITHUB_ACTOR'
-      - run: echo 'The action is:$GITHUB_REF'
+      - run: env
         
   build:
   
