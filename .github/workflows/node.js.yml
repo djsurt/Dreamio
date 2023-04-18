@@ -49,3 +49,27 @@ jobs:
     - name: Run client tests
       working-directory: ./client
       run: npm test
+
+    # Deploy client to Heroku
+    - name: Deploy client to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "rocket-sys-frontend"
+        heroku_email: "djsurti3003@gmail.com"
+        appdir: "client"
+
+    # Deploy server to Heroku
+    - name: Deploy server to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "rocket-sys-server"
+        heroku_email: "djsurti3003@gmail.com"
+        appdir: "server"
+      env:
+        PORT: ${{ secrets.PORT }}
+        CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+      environment:
+        name: github-pages
+
