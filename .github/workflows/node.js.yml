@@ -47,5 +47,10 @@ jobs:
       run: npm run &
 
     # Run tests
-    - name: Run tests
+    - name: Run client tests
+      working-directory: ./client
+      run: npm test
+
+    - name: Run server tests
+      working-directory: ./server
       run: npm test
