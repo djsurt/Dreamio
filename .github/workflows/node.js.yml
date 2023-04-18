@@ -14,8 +14,8 @@ jobs:
      runs-on: ubuntu-latest
      env:
           CI: false
-          PORT: ${{ secrets.PORT }}
-          CONNECTION_URL: ${{ secrets.CONNECTION_URL }}
+          PORT: "4005"
+          CONNECTION_URL: 'mongodb+srv://djsurt:djsurt123@cluster0.i7gyzkp.mongodb.net/?retryWrites=true&w=majority'
   
      defaults:
        run:
@@ -37,9 +37,8 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
       - run: npm run build --if-present
-      - run: echo 'The PORT is:${{ secrets.PORT }}'
-      - run: echo 'The CONNECTION_URL is:${{ secrets.CONNECTION_URL }}'
-      - run: env
+      - run: echo 'The PORT is:${{ env.PORT }}'
+      - run: echo 'The CONNECTION_URL is:${{ env.CONNECTION_URL }}'
         
   build:
   
