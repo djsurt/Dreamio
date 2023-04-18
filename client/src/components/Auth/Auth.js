@@ -10,6 +10,7 @@ import {signin, signup} from '../../actions/auth';
 import { configureStore } from "@reduxjs/toolkit"; //  IMPORTANT!!!! DO AN npm install '@reduxjs/toolkit' --legacy-peer-deps
 import authReducer from '../../reducers/auth';
 
+
 const AuthWrapper = () => {
   const store = configureStore({reducer: authReducer});
 
