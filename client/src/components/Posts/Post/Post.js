@@ -37,7 +37,7 @@ const Post = ({post, setCurrentId}) => {
       <Card className={classes.card}> 
         <CardMedia className={classes.media} image={post.selectedFile} title={post.title} onClick={openPost} />
         <div className={classes.overlay}>
-          <Typography variant="h6">{post.name}</Typography>
+          <Typography data-testid="name" variant="h6">{post.name}</Typography>
           <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
         </div>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
