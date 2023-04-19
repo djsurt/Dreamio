@@ -5,7 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "heroku-postbuild": "npm install --legacy-peer-deps"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
