@@ -17,4 +17,5 @@ router.get('/:userId/friends', getUserFriends);
 router.get('/:userId/friendRequests', getUserFriendRequests);
 router.get('/id/:id', getUserById);
 
+
 export default router;
