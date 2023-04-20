@@ -112,9 +112,14 @@ const samplePost = {
 
       await fireEvent.click(likeButton)
       //expect(LikeHandler).toHaveBeenCalledTimes(1)
-    })
 
+    });
 
+    it('has delete button', () => {
+      localStorage.setItem('profile', JSON.stringify(mockUser))
+      renderWithReduxAndRouter(<Post post={samplePost}/>);
+      expect(screen.getByRole("button", {name: 'Delete'})).toBeInTheDocument
+    });
     // Add other tests here
   });
 
