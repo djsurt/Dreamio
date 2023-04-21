@@ -9,8 +9,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Avatar from '@mui/material/Avatar';
 
 const options = {
-  hostname: 'localhost',
-  port: 4005,
+  hostname: 'rocket-sys-server.herokuapp.com',
+  port: 443, // Use 443 for HTTPS connections
   path: '/posts',
   method: 'GET'
 };
