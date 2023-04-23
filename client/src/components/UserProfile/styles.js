@@ -69,6 +69,9 @@ export default makeStyles((theme) => ({
       margin:'auto',
       color: 'rgb(116,113,113)',
   },
+  buttonWidth:{
+      width:'95%',
+  },
   /*
   heading: {
     color: 'rgba(0,183,255, 1)',

@@ -111,7 +111,7 @@ useEffect(() => {
                                 
                             </div>
                             ) : (
-                                <Button variant="contained" color="secondary" onClick={handleSendRequest}>Send Friend Request</Button>
+                                <Button variant="contained" className={classes.buttonWidth} color="secondary" onClick={handleSendRequest}>Send Friend Request</Button>
                             )
                             )}
 
@@ -142,7 +142,7 @@ useEffect(() => {
                                         <ul>
                                         {friendRequests.map((request) => (
                                         <li key={request._id}>
-                                            {request.name}
+                                            {request.name}&nbsp;&nbsp;
                                             <Button variant="contained" color="primary" onClick={() => handleAcceptRequest(request._id)} startIcon={<AddReactionIcon />}>Accept</Button>&nbsp;&nbsp;
                                             <Button variant="contained" color="secondary" onClick={() => handleIgnoreRequest(request._id)} startIcon={<SnoozeIcon />}>Ignore</Button>
                                         </li>
