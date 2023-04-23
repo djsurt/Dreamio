@@ -53,12 +53,11 @@ const mongoSentiment = async () => {
     const data = await fetchPosts();
     let resultingVal = 0;
     const posts = JSON.parse(data);
-    for (let i = 0; i < posts.length; ++i) {
-      resultingVal = resultingVal + (analyzeSentiment(posts[i]['message']));
-      console.log(resultingVal);
+    for (let i = 0; i < posts['data'].length; ++i) {
+      resultingVal = resultingVal + (analyzeSentiment(posts['data'][i]['message']));
     }
     value = resultingVal;
-
+    
     if (value <= -1) {
       return "The community is feeling down at the moment :(";
     } else if (value >= 1) {
