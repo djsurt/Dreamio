@@ -55,6 +55,7 @@ const mongoSentiment = async () => {
     const posts = JSON.parse(data);
     for (let i = 0; i < posts.length; ++i) {
       resultingVal = resultingVal + (analyzeSentiment(posts[i]['message']));
+      console.log(resultingVal);
     }
     value = resultingVal;
 
